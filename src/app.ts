@@ -3,7 +3,9 @@ import express from "express";
 import createConnection from "./database";
 import { router } from "./routes";
 
-if (process.env.NODE_ENV !== "test") createConnection();
+if (process.env.NODE_ENV !== "test") {
+  createConnection();
+}
 
 const app = express();
 

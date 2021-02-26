@@ -4,6 +4,7 @@ import { app } from "../app";
 
 import createConnection from "../database";
 import { SurveysRepository } from "../repositories/SurveysRepository";
+import { UsersRepository } from "../repositories/UsersRepository";
 
 let connection;
 describe("Surveys", () => {
@@ -13,8 +14,11 @@ describe("Surveys", () => {
   });
 
   afterAll(async () => {
-    const userRepository = getCustomRepository(SurveysRepository);
+    const userRepository = getCustomRepository(UsersRepository);
     await userRepository.clear();
+
+    const surveysRepository = getCustomRepository(SurveysRepository);
+    await surveysRepository.clear();
   });
 
   it("should be able to add new usrvey", async () => {
